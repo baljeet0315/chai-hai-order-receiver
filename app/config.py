@@ -38,7 +38,8 @@ class Settings:
     supabase_url: str = _base_url(os.getenv("SUPABASE_URL", ""))
     supabase_key: str = os.getenv("SUPABASE_SERVICE_KEY", "")
     # Google Sheets
-    google_service_account_json: str = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "")
+    # Some hosts keep the surrounding quotes from a pasted .env line; strip them.
+    google_service_account_json: str = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "").strip().strip("'")
     google_sheet_id: str = os.getenv("GOOGLE_SHEET_ID", "")
     google_sheet_tab: str = os.getenv("GOOGLE_SHEET_TAB", "Orders")
 
